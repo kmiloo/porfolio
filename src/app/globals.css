@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+:root {
+  --background: #e8f1ee;
+  --page-background: radial-gradient(circle at 85% 8%, rgba(22, 134, 111, 0.13), transparent 28rem), #e8f1ee;
+  --foreground: #071B37;
+  --muted: #315a55;
+  --border: rgba(7, 27, 55, 0.28);
+  --surface: rgba(255, 255, 255, 0.38);
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #071B37;
+    --page-background: linear-gradient(180deg, #004B3B 0%, #071B37 58%, #071B37 100%);
+    --foreground: #D1E8E2;
+    --muted: #A8CCC6;
+    --border: rgba(209, 232, 226, 0.32);
+    --surface: rgba(209, 232, 226, 0.08);
+    color-scheme: dark;
+  }
+}
+
+.light {
+  --background: #D1E8E2;
+  --page-background: #D1E8E2;
+  --foreground: #071B37;
+  --muted: #315A55;
+  --border: rgba(7, 27, 55, 0.28);
+  --surface: rgba(255, 255, 255, 0.38);
+  color-scheme: light;
+}
+
+.dark {
+  --background: #071B37;
+  --page-background: linear-gradient(180deg, #004B3B 0%, #071B37 58%, #071B37 100%);
+  --foreground: #D1E8E2;
+  --muted: #A8CCC6;
+  --border: rgba(209, 232, 226, 0.32);
+  --surface: rgba(209, 232, 226, 0.08);
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-surface: var(--surface);
+  --font-sans: var(--font-inconsolata), monospace;
+  --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+}
+
+html {
+  min-height: 100%;
+  background: var(--background);
+}
+
+body {
+  min-height: 100dvh;
+  background: var(--page-background);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: var(--foreground);
+}

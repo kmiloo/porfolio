@@ -1,0 +1,112 @@
+"use client";
+import React, { useState } from 'react';
+import StackSection from "./StackSection";
+
+export function AboutSection() {
+  // Estados para controlar el menú desplegable
+  const [isOpen, setIsOpen] = useState(false);
+  const [selected, setSelected] = useState('SELECT * FROM Usuario;');
+
+  // Opciones del select
+  const options = [
+    { value: 'all', label: 'SELECT * FROM Usuario;' },
+    { value: 'projects', label: 'SELECT * FROM Proyectos;' },
+    { value: 'tech', label: 'SELECT * FROM Tecnologias;' }
+  ];
+
+  return (
+    <section className="grid gap-6">
+      <div className="min-h-screen bg-page-background p-8 font-sans flex flex-col items-center gap-12 relative overflow-hidden text-foreground">
+        
+        {/* --- INICIO DEL SELECT PERSONALIZADO --- */}
+        <div className="z-10 w-full max-w-md ">
+          <label className="block text-sm font-semibold mb-2 text-muted">Ejecutar Consulta</label>
+          <div className="relative">
+            
+            {/* Botón que muestra la opción seleccionada */}
+            <div 
+              onClick={() => setIsOpen(!isOpen)}
+              className="w-full flex items-center justify-between bg-surface border border-border backdrop-blur-md text-foreground rounded-xl px-4 py-3 cursor-pointer hover:ring-2 hover:ring-muted transition-all"
+            >
+              <span className="truncate mr-4">{selected}</span>
+              <div className="text-muted flex-shrink-0">
+                <svg className={`w-4 h-4 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </div>
+            </div>
+
+            {/* Lista desplegable */}
+            {isOpen && (
+              <ul className="absolute z-50 w-full mt-2 bg-surface border border-border backdrop-blur-md rounded-xl shadow-xl overflow-hidden">
+                {options.map((option) => (
+                  <li 
+                    key={option.value}
+                    onClick={() => {
+                      setSelected(option.label);
+                      setIsOpen(false);
+                    }}
+                    // Usa hover:bg-muted/20 para que el hover sea idéntico al fondo de los encabezados de tus tarjetas
+                    className="px-4 py-3 text-foreground cursor-pointer hover:bg-muted/20 transition-colors border-b border-border/50 last:border-b-0 text-sm"
+                  >
+                    {option.label}
+                  </li>
+                ))}
+              </ul>
+            )}
+
+          </div>
+        </div>
+        {/* --- FIN DEL SELECT PERSONALIZADO --- */}
+
+        {/* Las tarjetas de las tablas (Tu código original intacto) */}
+        <div className="relative z-10 w-full max-w-5xl grid grid-cols-1 md:grid-cols-3 gap-8 items-start margin-top-8" style={{ marginTop: '10rem' }}>
+
+          <div className="bg-surface border border-border backdrop-blur-md rounded-2xl shadow-xl overflow-hidden transition-transform hover:scale-105">
+            <div className="bg-muted/20 px-4 py-3 border-b border-border flex items-center justify-between">
+              <h3 className="font-bold text-lg">Proyectos</h3>
+              <span className="text-xs bg-muted text-background px-2 py-1 rounded-full">Tabla</span>
+            </div>
+            <ul className="p-4 space-y-2 text-sm">
+              <li className="flex justify-between border-b border-border/50 pb-1"><span className="font-mono text-muted">id</span> <span>INT (PK)</span></li>
+              <li className="flex justify-between border-b border-border/50 pb-1"><span className="font-mono text-muted">usuario_id</span> <span>INT (FK)</span></li>
+              <li className="flex justify-between border-b border-border/50 pb-1"><span className="font-mono">titulo</span> <span>VARCHAR</span></li>
+              <li className="flex justify-between border-b border-border/50 pb-1"><span className="font-mono">imagen_url</span> <span>VARCHAR</span></li>
+              <li className="flex justify-between"><span className="font-mono">descripcion</span> <span>TEXT</span></li>
+            </ul>
+          </div>
+
+          <div className="bg-surface border-2 border-muted/50 backdrop-blur-md rounded-2xl shadow-2xl overflow-hidden relative z-20 md:-mt-8 transition-transform hover:scale-105">
+            <div className="bg-muted px-4 py-4 border-b border-border flex items-center justify-between">
+              <h3 className="font-bold text-lg text-background">Usuario</h3>
+              <span className="text-xs bg-background/20 text-background px-2 py-1 rounded-full">Primary</span>
+            </div>
+            <ul className="p-5 space-y-3 text-sm">
+              <li className="flex justify-between border-b border-border/50 pb-2"><span className="font-mono font-bold text-muted">id</span> <span>INT (PK)</span></li>
+              <li className="flex justify-between border-b border-border/50 pb-2"><span className="font-mono">nombre</span> <span>VARCHAR</span></li>
+              <li className="flex justify-between border-b border-border/50 pb-2"><span className="font-mono">email</span> <span>VARCHAR</span></li>
+              <li className="flex justify-between border-b border-border/50 pb-2"><span className="font-mono">linkedin</span> <span>VARCHAR</span></li>
+              <li className="flex justify-between border-b border-border/50 pb-2"><span className="font-mono">github</span> <span>VARCHAR</span></li>
+              <li className="flex justify-between border-b border-border/50 pb-2"><span className="font-mono">experiencia</span> <span>TEXT</span></li>
+              <li className="flex justify-between"><span className="font-mono">educacion</span> <span>TEXT</span></li>
+            </ul>
+          </div>
+
+          <div className="bg-surface border border-border backdrop-blur-md rounded-2xl shadow-xl overflow-hidden transition-transform hover:scale-105">
+            <div className="bg-muted/20 px-4 py-3 border-b border-border flex items-center justify-between">
+              <h3 className="font-bold text-lg">Tecnologías</h3>
+              <span className="text-xs bg-muted text-background px-2 py-1 rounded-full">Tabla</span>
+            </div>
+            <ul className="p-4 space-y-2 text-sm">
+              <li className="flex justify-between border-b border-border/50 pb-1"><span className="font-mono text-muted">id</span> <span>INT (PK)</span></li>
+              <li className="flex justify-between border-b border-border/50 pb-1"><span className="font-mono text-muted">usuario_id</span> <span>INT (FK)</span></li>
+              <li className="flex justify-between border-b border-border/50 pb-1"><span className="font-mono">nombre</span> <span>VARCHAR</span></li>
+              <li className="flex justify-between border-b border-border/50 pb-1"><span className="font-mono">framework</span> <span>BOOLEAN</span></li>
+            </ul>
+          </div>
+          
+        </div>
+      </div>
+    </section>
+  );
+}
