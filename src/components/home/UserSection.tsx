@@ -57,6 +57,13 @@ export function UserSection({ onViewProjects }: UserSectionProps) {
             >
               Contactar
             </a>
+            <a
+              href="/curriculum.pdf"
+              download
+              className="inline-flex items-center rounded-md border border-border bg-surface px-5 py-3 text-sm font-bold transition-colors hover:bg-muted/20 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground"
+            >
+              Descargar CV <span aria-hidden="true" className="ml-2">↓</span>
+            </a>
           </div>
         </div>
 
