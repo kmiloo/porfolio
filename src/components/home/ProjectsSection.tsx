@@ -315,7 +315,6 @@ export function ProjectsSection() {
               src={selectedImage}
               alt="Vista completa"
               fill
-              quality={100}
               className="object-contain"
             />
           </div>
