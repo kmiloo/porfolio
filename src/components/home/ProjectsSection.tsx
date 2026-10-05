@@ -46,7 +46,7 @@ const projects: Project[] = [
   },
   {
     title: "Sistema de Estacionamiento",
-    images: ["/images/inicio.webp"],
+    images: ["/images/Inicio.webp"],
     description:
       "Aplicación web para gestionar estacionamientos de la Universidad de Los Lagos: permite registrarse, reservar cupos, consultar disponibilidad e historial, administrar vehículos y coordinar la operación de guardias.",
     technologies: ["React 18", "Node.js", "PostgreSQL", "JWT", "QR", "Vercel"],
