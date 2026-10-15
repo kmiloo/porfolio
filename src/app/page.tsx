@@ -8,6 +8,7 @@ import { useState } from "react";
 import { QuerySelect } from "@/components/home/QuerySelect";
 import { UserSection } from "@/components/home/UserSection";
 import { TableSection } from "@/components/home/TableSection";
+import { Analytics } from '@vercel/analytics/next';
 
 // Tipamos los posibles valores para tener autocompletado y evitar errores
 export type ViewType = 'all' | 'projects' | 'tech';
@@ -40,6 +41,7 @@ export default function Home() {
         <div id="contenido-vista" className="w-full max-w-5xl scroll-mt-8">
         {currentView === 'projects' && <ProjectsSection />}
         {currentView === 'tech' && <StackSection />}
+        <Analytics />
       </div>
         
       </main>
